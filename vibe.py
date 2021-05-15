@@ -252,7 +252,7 @@ def main():
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBGSxAKPcy_oCxpYkHUcc4cNKPF-bEK6kIyQ&usqp=CAU" style="center-align: middle;float:right;width: 102px;height: 100px" >
             
 	      """)
-        st.subheader("Music recommendation system")
+        st.subheader("Music recommendation system (Vibe.in)")
         st.write("A recommender system seeks to estimate and predict usercontent preference. The system draws from data usage history,aiming at making suggestions based on the user’s (current)interests.")
         st.write("There are two main types of recommender systems:")
         st.write("Content-based filters")
