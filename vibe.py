@@ -193,13 +193,13 @@ def main():
             song_ten_id = song_user[song_user > 15].index.to_list()
             df_song_id_more_ten = df_songs[df_songs['user_id'].isin(song_ten_id)].reset_index(drop=True)
             df_songs_features = df_song_id_more_ten.pivot(index='song_id', columns='user_id', values='listen_count').fillna(0)
-            st.title("RECOMMENDATION")
             mat_songs_features = csr_matrix(df_songs_features.values)
             st.dataframe(df_songs_features.head())
             df_unique_songs = df_songs.drop_duplicates(subset=['song_id']).reset_index(drop=True)[['song_id', 'title']]
             decode_id_song = {
             song: i for i, song in 
             enumerate(list(df_unique_songs.set_index('song_id').loc[df_songs_features.index].title))}
+            st.title("RECOMMENDATION")
             model = Recommender(metric='cosine', algorithm='brute', k=20, data=mat_songs_features, decode_id_song=decode_id_song)
             song = st.text_area("Enter the song you want recommendations for",'I believe in miracles')
             new_recommendations = model.make_recommendation(new_song=song, n_recommendations=10)
